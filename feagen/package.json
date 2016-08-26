@@ -1,0 +1,29 @@
+{
+  "name": "Feagen",
+  "version": "0.0.1",
+  "description": "a tool to analyze and generate the bdd feature",
+  "main": "index.html",
+  "window": {
+    "title": "Feagen",
+    "icon": "icon.png",
+    "toolbar": false,
+    "resizable": false,
+    "width": 1024,
+    "height": 768,
+    "min_width": 400,
+    "min_height": 200,
+    "max_width": 1024,
+    "max_height": 768,
+    "position": "mouse"
+  },
+  "webkit": {
+    "plugin": false,
+    "java": false,
+    "page-cache": false
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ralph Yang",
+  "license": "MIT"
+}
