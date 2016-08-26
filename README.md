@@ -46,3 +46,8 @@ Every time we should return a page for the reference/link to the next step class
 
 # About This Tool
 This is a desktop tool associate the cucumber project, if follow the above standard write the cucumber UI test, you can use this tool to generate the customize feature file. If add the running script, can also directly run it.
+
+* Choose the steps *
+![image](https://github.com/ycj28c/Feagen/blob/master/images/1.png)
+* Generate the feture *
+![image](https://github.com/ycj28c/Feagen/blob/master/images/2.png)
