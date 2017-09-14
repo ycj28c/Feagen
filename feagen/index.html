@@ -307,9 +307,9 @@
 				$scope.$apply();
 			}
 			
-			// custom filter to get behavior, show both 'When' and 'And' content
+			// custom filter to get behavior, show 'Given', 'When' and 'And' content
 			$scope.behaviorFilter = function(jsondata) {
-				return jsondata.flag === "When" || jsondata.flag === "And";
+				return jsondata.flag === "When" || jsondata.flag === "And" || jsondata.flag === "Given";
 			};
 
 			//get total file list here
