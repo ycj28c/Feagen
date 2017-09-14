@@ -6,8 +6,8 @@
   "window": {
     "title": "Feagen",
     "icon": "icon.png",
-    "toolbar": true,
-    "resizable": true,
+    "toolbar": false,
+    "resizable": false,
     "width": 1024,
     "height": 768,
     "min_width": 400,
