@@ -156,7 +156,7 @@
 
 				//console.log(codeArray[i]);
 
-				var myRegexp = /(\s*)(@When|@Then|@Given)(.*)/g;
+				var myRegexp = /(\s*)(@When|@Then|@Given|@And)(.*)/g;
 				var matchLine = myRegexp.exec(codeArray[i]);
 				if(matchLine!=null){
 					console.log("Get Sentence: "+codeArray[i]);
@@ -306,6 +306,11 @@
 			$scope.applyAll = function(){
 				$scope.$apply();
 			}
+			
+			// custom filter to get behavior, show both 'When' and 'And' content
+			$scope.behaviorFilter = function(jsondata) {
+				return jsondata.flag === "When" || jsondata.flag === "And";
+			};
 
 			//get total file list here
 			/*$scope.options = [
@@ -672,7 +677,7 @@
 					<div id="behaviors" class="panel panel-success col-xs-3">
 						<div class="panel-heading text-center">BEHAVIOR</div>
 						<ul class="list-group" id="mysort1">
-							<li class="list-group-item" ng-repeat="x in data | filter:{flag:'When'}" flag="{{x.flag}}" methodName="{{x.methodName}}" regularExpress="{{x.regularExpress}}" linkTo="{{x.linkTo}}">
+							<li class="list-group-item" ng-repeat="x in data | filter:behaviorFilter" flag="{{x.flag}}" methodName="{{x.methodName}}" regularExpress="{{x.regularExpress}}" linkTo="{{x.linkTo}}">
 								<!--{{x.methodName.slice(0,20) + '...'}} -->
 								{{x.regularExpress.slice(0,60)}}
 							</li>
