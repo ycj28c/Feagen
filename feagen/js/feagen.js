@@ -15,12 +15,13 @@ function stepModal()
 	var methodName;
 }
 
+/* fill the current step content into options in UI */
 function optionRefresh() {
-	console.log("##################################");
+	console.log("################ Option Refresh ################");
 	var fileList = walk(globalFolder+"/temp");
-	var xxList = [];
+	var stepsList = [];
 	for(i=0;i<fileList.length;i++){
-		var xxdata ={};
+		var stepsData ={};
 
 		//var myRegexp6 = /.*Step\.java/g;
 		//C:/git/nodeWebkit/feagen/temp/CompanyProfilePageStep.json
@@ -29,23 +30,24 @@ function optionRefresh() {
 		var matchMethod = myRegexp.exec(fileList[i]);
 		console.log(fileList[i]);
 		if(matchMethod){
-			console.log("%%%%%%%%%%%%%%%%%% "+fileList[i]+" %%%%%%%%%%%%%%%%% "+matchMethod[3]);
-			xxdata.abbr = matchMethod[3];
+			console.log("Refreshing "+fileList[i]+" locate at: "+matchMethod[3]);
+			stepsData.abbr = matchMethod[3];
 		} else {
-			xxdata.abbr = "not matched";
+			stepsData.abbr = "not matched";
 		}
-		//xxdata.abbr = fileList[i].toString().substring(fileList[i].length-10);
+		//stepsData.abbr = fileList[i].toString().substring(fileList[i].length-10);
 
-		xxdata.path = fileList[i];
-		xxList.push(xxdata);
+		stepsData.path = fileList[i];
+		stepsList.push(stepsData);
 	}
-	//var myJsonString = JSON.stringify(xxList);
+	//var myJsonString = JSON.stringify(stepsList);
 	//console.log(myJsonString);
-	console.log("====================test option list==========================");
-	console.log(xxList);
-	return xxList;
+	//console.log("====================test option list==========================");
+	console.log(stepsList);
+	return stepsList;
 }
-//search the current folder
+
+/* walk through the current folder, generate all file list */
 function walk(path){
 	var fs = require('fs');
 	var fileList = [];
@@ -64,12 +66,7 @@ function walk(path){
 //var xxx = walk('C:/Users/XIN/Desktop/node webkit/myNodeWebkitApps/feagen/temp');
 //console.log(xxx);
 
-function setbehaviorCtrl(path){
-	$("#behaviors li").each(function() {
-		$(this).remove();
-	});
-}
-
+/* the jquery drag and drop functions */
 function enableDragAndDrop(){
 	$( "#behaviors" ).accordion();
 	$( "#behaviors li" ).draggable({
@@ -145,11 +142,13 @@ function enableDragAndDrop(){
 	});
 }
 
+/* empty the formated text */
 function reStringClean(txt){
 	var s = txt.replace(/\\/g, "");
 	return s;
 }
 
+/* process the regex string from BDD cucumber variable */
 function handleRegularExpressString(){
 	var str = $("#featureSteps ol li:last-child" ).attr('completeStep');
 	var txt = $("#featureSteps ol li:last-child" ).text();
@@ -169,8 +168,8 @@ function handleRegularExpressString(){
 	 $('#reModal').modal('toggle');
 }
 
+/* generate the feature file */
 function generateFeature(){
-	//alert("aaa");
 	var txt = "";
 	var tag = "@ui\n";
 	var featureSample = "Feature: test line 1\n"
@@ -182,26 +181,29 @@ function generateFeature(){
 	txt += scenarioSample;
 	$("#featureSteps ol li").each(function (index) {
 		//if(index == 0) return true;
-		console.log(index + ":cccccccccccccccc:" + $(this).text());
-		console.log(index + ":dddddddddddddddd:" + $(this).attr("regularexpress"));
-		console.log(index + ":eeeeeeeeeeeeeeee:" + $(this).attr("completeStep"));
+		console.log(index+". Origin Text:" + $(this).text().trim());
+		console.log(index+". ReGex  Text:" + $(this).attr("regularexpress"));
+		console.log(index+". Final  Text:" + $(this).attr("completeStep"));
 		txt += "    " + $(this).attr("flag") + " " + $(this).attr("completeStep") + "\n";
 		/*if ($(this).text != undefined) {
-			console.log("cccccccccccccccc"+$(this).text);
+			console.log("Text undefined"+$(this).text);
 		}*/
 	});
 	$("textarea#featureText").val(txt);
 	//featureText
 }
 
+/* clean all the feature steps */
 function cleanFeature(){
 	$('#mysort3').empty();
 }
 
+/* remove the last feature step */
 function removeLastStep(){
 	$('#mysort3').children("li:last-child").remove();
 }
 
+/* add a manual feature step */
 function addNewStep(){
 	var stepflag = $('#stepFlag').val().trim();
 	var step = $('#stepContent').val().trim();

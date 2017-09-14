@@ -19,7 +19,8 @@ function codeAnalyze(currentPath){
 				var javaFile = javaFileRegex.exec(currentFile);
 				if(javaFile){
 					//alert(files.length);
-					console.log("%%%%%%%%%%%%%%%%%% "+files[i]+" %%%%%%%%%%%%%%%%% "+javaFile);
+					console.log("\n%%%%%%%%%%%%%%%%%% Parsing "+files[i]+" %%%%%%%%%%%%%%%%%%\n");
+					console.log("File Location: "+javaFile+"\n\n");
 					//readFile(currentFile, "C:/git/nodeWebkit/feagen/temp/"+files[i].substring(0, files[i].length-5)+".json");
 					var tempFile = globalFolder + "/temp/"+files[i].substring(0, files[i].length-5)+".json";
 					readFile(currentFile, tempFile);

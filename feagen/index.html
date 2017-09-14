@@ -23,6 +23,7 @@
 
 	<script>
 		var myApp1;
+		/* Angular JS models */
 		myApp1 = myApp1 || (function () {
 			var pleaseWaitDiv = $('<div class="modal hide" id="pleaseWaitDialog" data-backdrop="static" data-keyboard="false"><div class="modal-header"><h1>Processing...</h1></div><div class="modal-body"><div class="progress progress-striped active"><div class="bar" style="width: 100%;"></div></div></div></div>');
 			return {
@@ -32,7 +33,6 @@
 				hidePleaseWait: function () {
 					pleaseWaitDiv.modal('hide');
 				},
-
 			};
 		})();
 		
@@ -44,60 +44,53 @@
 			];
 		});*/
 
-		//angular js inject data
+		/* Angular JS inject data */
 		var myAppModule = angular.module('myApp', []);
+		/* Angular JS controller */
 		var datactrl = function behaviorController($http,$scope,$timeout) {
 			//initial data display
 			//$http.get(globalFolder+"/temp/loginPageStep.json").success(function(data) {
-			var defaultStartPage = globalFolder+"/temp/loginPageStep.json";
+			var defaultStartPage = globalFolder+"/temp/LoginPageStep.json";
 			/*$http.get(defaultStartPage).success(function(data) {
 				$scope.data = data;
-				console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 				console.log(data);
 				//console.log(JSON.stringify(data));
-			});		*/
+			});*/
 
+			/* update the link data according to the drill down selection */
 			$scope.updateModel = function(choosen) {
 				//$http.get("C:/Users/XIN/Desktop/node webkit/myNodeWebkitApps/feagen/temp/test.json").success(function(data) {
 				$http.get(choosen).success(function(data) {
 					$scope.selected_id = choosen;
 					$scope.data = data;
-					//console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+$scope.selected_id);
-					console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+choosen);
+					//console.log("scope.selected_id: "+$scope.selected_id);
+					console.log("Choose PageStep: "+choosen);
 					setTimeout('enableDragAndDrop()',200); //must add the timeout, no update real time, it is stupid
-				});
-				/*$http.get(choosen).then(function(response) {
-					$scope.data = response.data;
-					console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+choosen);
-					//$scope.$digest;
-					setTimeout('enableDragAndDrop()',100); //must add the timeout, no update real time, it is stupid
-					// success handler
-				}, function(response) {
-					console.log("???????????????????????????????????????????????????"+choosen);
-					// error handler
-				});	*/
+				});		
 			};
 			//$scope.options = walk(globalFolder+"/temp");
 			//$scope.options = optionRefresh();
 			$scope.options = [];
 
+			/* update the all UI option according to the drill down selection */
 			$scope.updateOptions = function(){
 				$scope.options = optionRefresh();
-				console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+defaultStartPage);
+				console.log("Default Start Page is: "+defaultStartPage);
 				$scope.$apply();
 				$http.get(defaultStartPage).success(function(data) {
 					$scope.selected_id = defaultStartPage;
 					$scope.data = data;
-					console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+$scope.selected_id);
+					console.log("Scope Selected_id is: "+$scope.selected_id);
 					setTimeout('enableDragAndDrop()',200); //must add the timeout, no update real time, it is stupid
 				});
 			};
 
+			/* apply the changes */
 			$scope.applyAll = function(){
 				$scope.$apply();
 			}
 			
-			// custom filter to get behavior, show 'Given', 'When' and 'And' content
+			/* custom filter to get behavior, show 'Given', 'When' and 'And' content */
 			$scope.behaviorFilter = function(jsondata) {
 				return jsondata.flag === "When" || jsondata.flag === "And" || jsondata.flag === "Given";
 			};
@@ -110,6 +103,7 @@
 			  {path:4, abbr:'Adama'}
 			]*/
 		}
+		/* Blind the controller with data*/
 		myAppModule.controller('stepController', datactrl);
 	</script>
 </head>
