@@ -6,18 +6,7 @@
 var globalFolder = process.cwd();
 console.log("globalFolder: "+globalFolder);
 
-/*$(function() {
-	$( "#mysort1, #mysort2").sortable({
-		connectWith: "#mysort3"
-	});
-	$( "#mysort3").sortable({
-		out: function( event, ui ) {
-
-		}
-	});
-});*/
-
-//step modal
+/* step modal */
 function stepModal()
 {
 	var flag;
