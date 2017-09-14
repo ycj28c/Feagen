@@ -12,7 +12,7 @@ We are writing UI automation test use selenium and cucumber and maven. We know c
       And Go to the Normal login section
       Then You can see the welcome page
 ```
-Then we code each "When", "And", "Then", such as
+Then we code each "When", "And", "Then", "Given" such as
 ```
     @When("^Go to the Normal login section\\.$")
   	public HomePage go_to_the_Normal_login_section() throws Throwable {	    
@@ -22,11 +22,11 @@ Then we code each "When", "And", "Then", such as
   		return homePage;
   	}
 ```
-
-We only follow the feature file to code the method, if there a more fun use for the BDD testing? Yes, it has!
+We always write feature file first, then convert feature to code, is there a way to do it reversely, then answer it Yes.
+That's why we develop this feagen tool.
 
 # Idea
-Here is the idea:
+Here are the ideas:
 1. write page object for each page/page module
 2. write cucumber step class associate each page object with possible operations
 3. link operations with the cucumber step class name
