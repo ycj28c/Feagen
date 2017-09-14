@@ -3,4 +3,6 @@
 .classpath
 .project
 /bin/
-feagen/version/app.nw
+app.nw
+!*.exe
+!*.dll
