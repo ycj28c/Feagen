@@ -1,5 +1,5 @@
 var mavenPath = "/apache-maven-3.3.3/bin/mvn";
-var additionMvnParameter = "-Denv=demo -Dbrowser=chrome -Pdevelopment -Dforks=1";
+var additionMvnParameter = "-Denv=qa -Dbrowser=chrome -Pdevelopment -Dforks=1";
 
 /* parse the java code of bdd steps */
 function codeAnalyze(currentPath){
@@ -174,7 +174,7 @@ function runTest(){
 	/*var featureOutput = "";
 	featureOutput += "@ui\n";
 	featureOutput += "Feature: Benchmarking (TrueView) sales demo\n";
-	featureOutput += "  Scenario: Equilar user login and show the customer TrueView demo\n";
+	featureOutput += "  Scenario: user login and show the customer TrueView demo\n";
 	for(i=0;i<optionTexts.length;i++){
 		featureOutput+= "     ";
 		featureOutput+= optionTexts[i].attr("flag");

@@ -175,7 +175,7 @@ function generateFeature(){
 	var featureSample = "Feature: test line 1\n"
 					+ "  test line 2\n"
 					+ "  i want test line 3\n";
-	var scenarioSample = "  Scenario: insight_test\n";
+	var scenarioSample = "  Scenario: ralph_test\n";
 	txt += tag;
 	txt += featureSample;
 	txt += scenarioSample;
