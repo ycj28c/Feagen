@@ -1,8 +1,0 @@
-io\github\test\BrowserConfig.class
-io\github\test\LogoutHelper.class
-io\github\test\SharedEnvironment.class
-io\github\pageobject\GoogleSearchResultPage.class
-io\github\test\AbstractPage.class
-io\github\test\UnSharedDriver.class
-io\github\test\PropertiesUtil.class
-io\github\pageobject\LoginPage.class
